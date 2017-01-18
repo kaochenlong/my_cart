@@ -9,5 +9,9 @@ class CartItem
   def increment(n = 1)
     @quantity += n if n > 0
   end
+
+  def product
+    Product.find_by(id: @product_id)
+  end
 end
 
