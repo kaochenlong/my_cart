@@ -1,28 +1,14 @@
 require 'rails_helper'
 
-class Cart
-  def initialize
-    @items = []
-  end
-
-  def empty?
-    @items.empty?
-  end
-
-  def add_item(product_id)
-    @items << product_id
-  end
-end
-
 RSpec.describe Cart, type: :model do
 
 describe "基本功能" do
   it "可以新增商品到購物車裡，然後購物車裡就有東西了。" do
     cart = Cart.new
-    expect(cart.empty?).to be true
+    expect(cart).to be_empty
 
     cart.add_item(1)
-    expect(cart.empty?).to be false
+    expect(cart).not_to be_empty
   end
 
   # 如果加了相同種類的商品到購物車裡，購買項目(CartItem)並不會增加，但數量會改變。
