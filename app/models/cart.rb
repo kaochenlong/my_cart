@@ -5,16 +5,16 @@ class Cart
   end
 
   def empty?
-    @items.empty?
+    items.empty?
   end
 
   def add_item(product_id)
-    found_item = @items.find { |item| item.product_id == product_id }
+    found_item = items.find { |item| item.product_id == product_id }
 
     if found_item
       found_item.increment
     else
-      @items << CartItem.new(product_id)
+      items << CartItem.new(product_id)
     end
   end
 
