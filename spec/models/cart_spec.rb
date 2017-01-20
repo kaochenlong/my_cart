@@ -57,7 +57,13 @@ RSpec.describe Cart, type: :model do
       expect(cart.serialize).to eq cart_item_hash
     end
 
-    #* 也可以把 Hash 還原成購物車的內容
+    it "也可以把 Hash 還原成購物車的內容" do
+      cart = Cart.from_hash(cart_item_hash)
+
+      expect(cart.items.count).to be 2
+      expect(cart.items.first.product_id).to be 1
+      expect(cart.items.last.quantity).to be 5
+    end
   end
 
   private
