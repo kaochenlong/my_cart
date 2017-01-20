@@ -28,6 +28,12 @@ class Cart
     end
   end
 
+  def serialize
+    result = items.map { |item| {"product_id" => item.product_id, "quantity" => item.quantity} }
+
+    { "items" => result }
+  end
+
   private
   def xmas
     Date.today.month == 12 && Date.today.day == 25
