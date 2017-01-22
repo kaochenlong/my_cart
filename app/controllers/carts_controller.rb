@@ -23,9 +23,5 @@ class CartsController < ApplicationController
     session[CART_SESSION] = nil
     redirect_to root_path, notice: "購物車已清除"
   end
-
-  private
-  def user_only!
-    redirect_to cart_path, alert: '請先登入會員' unless current_user
-  end
 end
+
