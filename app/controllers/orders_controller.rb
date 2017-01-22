@@ -1,8 +1,23 @@
 class OrdersController < ApplicationController
-  before_action :user_only!, only: [:create, :index]
+  before_action :user_only!, only: [:create, :index, :cancel, :show]
 
   def index
     @orders = current_user.orders
+  end
+
+  def show
+    @order = current_user.orders.find_by(id: params[:id])
+    redirect_to orders_path, alert: "查無此訂單" unless @order
+  end
+
+  def cancel
+    order = current_user.orders.find_by(id: params[:id])
+    if order && order.may_cancel?
+      order.cancel!
+      redirect_to orders_path, notice: "訂單已取消"
+    else
+      redirect_to orders_path, alert: "訂單無法取消"
+    end
   end
 
   def create

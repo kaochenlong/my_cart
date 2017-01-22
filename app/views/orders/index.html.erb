@@ -17,7 +17,11 @@
       <td><%= order.serial %></td>
       <td><%= order.total_price %></td>
       <td><%= order.aasm_state %></td>
-      <td><%= link_to '詳細', order, class:'btn btn-xs btn-success' %></td>
+      <td>
+        <%= link_to '詳細', order, class:'btn btn-xs btn-success' %>
+        <%= link_to '取消', cancel_order_path(order), method: "delete", class:'btn btn-xs btn-danger' if order.may_cancel? %>
+      </td>
+
     </tr>
     <% end %>
   </tbody>
