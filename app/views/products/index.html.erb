@@ -1,20 +1,22 @@
 <h1>商品列表</h1>
+<%= paginate @products, theme: 'twitter-bootstrap-3' %>
 <div class="row">
   <% @products.each do |product| %>
-  <!-- begin -->
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="http://fakeimg.pl/250x200/?text=<%=product.title%>">
-      <div class="caption">
-        <h3><%= product.title %></h3>
-        <p>售價：<%= product.price %></p>
-        <p><%= product.description.truncate(60) %></p>
-        <p>
+    <!-- begin -->
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="http://fakeimg.pl/250x200/?text=<%=product.title%>">
+        <div class="caption">
+          <h3><%= product.title %></h3>
+          <p>售價：<%= product.price %></p>
+          <p><%= product.description.truncate(60) %></p>
+          <p>
           <%= link_to '詳細資料', product, class:'btn btn-primary' %>
           <%= link_to '放到購物車', add_cart_path(product), class:'btn btn-danger', method: "post" %>
-        </p>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- end -->
+    <!-- end -->
   <% end %>
+</div>
