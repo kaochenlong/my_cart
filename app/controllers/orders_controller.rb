@@ -1,5 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :user_only!, only: [:create]
+  before_action :user_only!, only: [:create, :index]
+
+  def index
+    @orders = current_user.orders
+  end
 
   def create
     build_order

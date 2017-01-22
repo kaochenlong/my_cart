@@ -34,6 +34,9 @@ class Order < ApplicationRecord
 
   end
 
+  def total_price
+    order_items.reduce(0) { |sum, item| sum + item.price }
+  end
 
   def serial
     "OD#{id.to_s.rjust(10, "0")}"
