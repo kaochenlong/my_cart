@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122034754) do
+ActiveRecord::Schema.define(version: 20170122074645) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 20170122034754) do
     t.string   "address"
     t.string   "company_id", limit: 10
     t.integer  "user_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "aasm_state",            default: "pending"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
