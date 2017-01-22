@@ -11,6 +11,8 @@
   <body>
     <%= render "shared/navbar" %>
     <div class="container">
+      <%= content_tag :div, notice, class:'alert alert-success' if notice %>
+      <%= content_tag :div, alert, class:'alert alert-danger' if alert %>
       <%= yield %>
     </div>
   </body>
